@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
+    <title>Fire Snake</title>
     <style>
         * {
             margin: 0;
@@ -16,7 +16,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #3a0a0a 0%, #7a1410 100%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #fff;
         }
@@ -28,7 +28,7 @@
         h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            background: linear-gradient(135deg, #ff8a3d, #ff2d2d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -39,10 +39,10 @@
         }
 
         #gameCanvas {
-            border: 3px solid #00d4ff;
-            background-color: #0f3460;
+            border: 3px solid #ff4d2d;
+            background-color: #2a0808;
             border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 77, 45, 0.3);
             display: block;
             margin: 0 auto;
         }
@@ -56,8 +56,8 @@
         }
 
         .score-box {
-            background: rgba(0, 212, 255, 0.1);
-            border: 2px solid #00d4ff;
+            background: rgba(255, 77, 45, 0.1);
+            border: 2px solid #ff4d2d;
             padding: 1rem 2rem;
             border-radius: 8px;
             min-width: 150px;
@@ -65,7 +65,7 @@
 
         .score-label {
             font-size: 0.9rem;
-            color: #00d4ff;
+            color: #ff4d2d;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
@@ -86,7 +86,7 @@
         }
 
         button {
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            background: linear-gradient(135deg, #ff8a3d, #ff2d2d);
             color: #fff;
             border: none;
             padding: 0.75rem 2rem;
@@ -101,7 +101,7 @@
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 77, 45, 0.4);
         }
 
         button:active {
@@ -139,12 +139,12 @@
         }
 
         .game-over-content {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border: 3px solid #00d4ff;
+            background: linear-gradient(135deg, #3a0a0a, #7a1410);
+            border: 3px solid #ff4d2d;
             padding: 3rem 2rem;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 30px rgba(255, 77, 45, 0.5);
         }
 
         .game-over-content h2 {
@@ -156,7 +156,7 @@
         .game-over-content p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            color: #00d4ff;
+            color: #ff4d2d;
         }
 
         @media (max-width: 600px) {
@@ -185,7 +185,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🐍 SNAKE</h1>
+        <h1>🔥 FIRE SNAKE</h1>
 
         <div class="game-wrapper">
             <canvas id="gameCanvas" width="400" height="400"></canvas>
@@ -295,11 +295,11 @@
 
         function draw() {
             // Clear canvas
-            ctx.fillStyle = '#0f3460';
+            ctx.fillStyle = '#2a0808';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             // Draw grid (optional, subtle)
-            ctx.strokeStyle = 'rgba(0, 212, 255, 0.05)';
+            ctx.strokeStyle = 'rgba(255, 77, 45, 0.05)';
             ctx.lineWidth = 0.5;
             for (let i = 0; i <= TILE_COUNT; i++) {
                 ctx.beginPath();
@@ -316,13 +316,13 @@
             snake.forEach((segment, index) => {
                 if (index === 0) {
                     // Head
-                    ctx.fillStyle = '#00ff88';
-                    ctx.shadowColor = 'rgba(0, 255, 136, 0.5)';
+                    ctx.fillStyle = '#ff8a3d';
+                    ctx.shadowColor = 'rgba(255, 138, 61, 0.6)';
                     ctx.shadowBlur = 10;
                 } else {
                     // Body
-                    ctx.fillStyle = '#00d4ff';
-                    ctx.shadowColor = 'rgba(0, 212, 255, 0.3)';
+                    ctx.fillStyle = '#ff4d2d';
+                    ctx.shadowColor = 'rgba(255, 77, 45, 0.3)';
                     ctx.shadowBlur = 5;
                 }
                 ctx.fillRect(
@@ -335,8 +335,8 @@
             ctx.shadowColor = 'transparent';
 
             // Draw food
-            ctx.fillStyle = '#ff6b6b';
-            ctx.shadowColor = 'rgba(255, 107, 107, 0.5)';
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
             ctx.shadowBlur = 10;
             ctx.beginPath();
             ctx.arc(
